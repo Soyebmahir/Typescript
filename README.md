@@ -1,10 +1,6 @@
 # Typescript
 
-In Typescript we can strictly maintain the behavior of type of variable, function parameters, object, array.
-We dont need to wait for browser output to confirm about error.
-Code editor will provide immediate error
-
-## variable declaration and its behavior
+# variable declaration and its behavior
 
 ```javascript
 let studentName = "soyeb";
