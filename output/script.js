@@ -7,10 +7,10 @@ number = 34;
 number = 'aabir'; //there wont be any error because we didnt assign at the same line where the variable declared
 // funciton 
 // vanilla way
-function add(a, b) {
-    return a + b;
-}
-add(2, 3);
+// function add (a,b){
+//     return a+b 
+// }
+// add(2,3)
 //Typescript: should declare the variable type implicitly
 function add2(a, b) {
     return a + b;
@@ -31,3 +31,27 @@ const employe = {
 };
 // employe.name=24 // will give an error cause name already assigned as a string type variable
 // employe.salary=3000 // also give an error cz there is no variable or property named salary
+// Explicit and Union type
+let a; //cant be assigned any other type of data in this variable
+let student2;
+let student3 = []; //union type
+student3.push(23);
+student3.push('Sohag');
+student3.push('Sohag');
+let employe2; // now i can give any type of object structure
+let employee3; //now I have to assign value in this object just like this schema
+// any type
+let name1;
+let student4 = [];
+// function with ts and optional parameter
+let myFunc;
+myFunc = (a, b, c) => {
+    console.log(a + b);
+};
+myFunc(10, 20);
+// function with ts and default parameter
+let myFunc2;
+myFunc2 = (a, b, c = 0) => {
+    console.log(a + b);
+};
+myFunc2(10, 20);

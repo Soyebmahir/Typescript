@@ -73,3 +73,42 @@ let employee3: {
   adult: boolean,
 }; //now I have to assign value in this object just like this schema
 ```
+
+### any type
+
+```javascript
+// any type
+let name1: any;
+let student4: any[] = [];
+```
+
+```javascript
+// function with ts and optional parameter
+let myFunc: Function;
+myFunc = (a: number, b: number, c?: number) => {
+  console.log(a + b);
+};
+myFunc(10, 20);
+```
+
+```javascript
+// function with ts and default parameter
+let myFunc2: Function;
+myFunc2 = (a: number, b: number, c: string = true) => {
+  console.log(a + b);
+};
+myFunc2(10, 20);
+
+//and we can explicitly declare the type of return
+let myFunc3: Function;
+myFunc3 = (a: number, b: number, c: string = true): number => {
+  console.log(a + b);
+};
+myFunc3(10, 20);
+```
+
+## Important
+
+### in vanilla, if we dont return anything from function it will return undefined by default but in typescript it will return void
+
+### void and undefined two different thing, void means nothing but undefined means not defined which is also a data type
