@@ -69,3 +69,14 @@ myFunc2=(a:number,b:number,c:number=0)=>{
     console.log(a+b);
 }
 myFunc2(10,20)
+
+// Type Alias
+type stringOrNumber =string|number;
+type userType={name:string,age:number}
+const userdetails =(id:stringOrNumber, user:userType)=>{
+    console.log(`User Id ${id} and name ${user.name }`);
+}
+const studentInfo=(id:stringOrNumber,student:userType)=>{
+    console.log('Anything');
+
+}

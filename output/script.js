@@ -55,3 +55,9 @@ myFunc2 = (a, b, c = 0) => {
     console.log(a + b);
 };
 myFunc2(10, 20);
+const userdetails = (id, user) => {
+    console.log(`User Id ${id} and name ${user.name}`);
+};
+const studentInfo = (id, student) => {
+    console.log('Anything');
+};

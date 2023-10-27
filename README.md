@@ -112,3 +112,17 @@ myFunc3(10, 20);
 ### in vanilla, if we dont return anything from function it will return undefined by default but in typescript it will return void
 
 ### void and undefined two different thing, void means nothing but undefined means not defined which is also a data type
+
+### Type Alias
+
+```javascript
+// Type Alias
+type stringOrNumber = string | number;
+type userType = { name: string, age: number };
+const userdetails = (id: stringOrNumber, user: userType) => {
+  console.log(`User Id ${id} and name ${user.name}`);
+};
+const studentInfo = (id: stringOrNumber, student: userType) => {
+  console.log("Anything");
+};
+```
