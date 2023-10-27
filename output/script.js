@@ -61,3 +61,32 @@ const userdetails = (id, user) => {
 const studentInfo = (id, student) => {
     console.log('Anything');
 };
+// function signature 
+// which means declare a function, return type should be declared, if parameter exist then it should be declared
+let add;
+add = (a, b) => {
+    return a + b;
+};
+add(3, 4);
+let userDetails2;
+userDetails2 = (id, user) => {
+    console.log(user.name);
+};
+userDetails2(222, { name: 'Soyeb', age: 26 });
+// classes
+class Player {
+    constructor(n, a, c) {
+        this.name = n;
+        this.age = a;
+        this.country = c;
+    }
+    play() {
+        console.log(`${this.name} is playing for ${this.country}`);
+    }
+}
+const marshafi = new Player('Mash', 34, 'Bangladesh');
+const sakib = new Player('Shakib', 34, 'Bangladesh');
+const players = [];
+players.push(marshafi);
+players.push(sakib);
+console.log(players);

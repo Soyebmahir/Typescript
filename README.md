@@ -126,3 +126,23 @@ const studentInfo = (id: stringOrNumber, student: userType) => {
   console.log("Anything");
 };
 ```
+
+### function signature
+
+```javascript
+// which means declare a function, return type should be declared, if parameter exist then it should be declared
+let add: (a: number, b: number) => number;
+add = (a: number, b: number) => {
+  return a + b;
+};
+add(3, 4);
+
+let userDetails2: (
+  id: number | string,
+  userInfo: { name: string, age: number }
+) => void;
+userDetails2 = (id: number | string, user: { name: string, age: number }) => {
+  console.log(user.name);
+};
+userDetails2(222, { name: "Soyeb", age: 26 });
+```

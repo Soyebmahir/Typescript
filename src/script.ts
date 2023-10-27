@@ -80,3 +80,40 @@ const studentInfo=(id:stringOrNumber,student:userType)=>{
     console.log('Anything');
 
 }
+
+// function signature 
+// which means declare a function, return type should be declared, if parameter exist then it should be declared
+let add:(a:number,b:number)=>number
+add=(a:number,b:number)=>{
+return a+b
+}
+add(3,4)
+
+let userDetails2:(id:number|string,userInfo:{name:string,age:number})=>void
+userDetails2=(id:number|string,user:{name:string,age:number})=>{
+console.log(user.name);
+}
+userDetails2(222,{name:'Soyeb',age:26})
+
+// classes
+class Player{
+    name:string;
+    age:number;
+    country:string
+    constructor(n:string,a:number,c:string){
+        this.name=n;
+        this.age=a;
+        this.country=c
+
+    }
+    play(){
+        console.log(`${this.name} is playing for ${this.country}`);
+    }
+}
+const marshafi = new Player('Mash',34,'Bangladesh')
+const sakib = new Player('Shakib',34,'Bangladesh')
+
+const players:Player[]=[];
+players.push(marshafi)
+players.push(sakib)
+console.log(players);
