@@ -1,4 +1,5 @@
 # Typescript
+https://github.com/Soyebmahir/Typescript/blob/43a4071d02bae21075d67a55bd67ab6e7169dc01/src/script.ts#L1
 
 # variable declaration and its behavior
 
