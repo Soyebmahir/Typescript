@@ -117,3 +117,31 @@ const players:Player[]=[];
 players.push(marshafi)
 players.push(sakib)
 console.log(players);
+
+// access modifier
+class Player2{
+    public name:string;
+    private age:number;
+    readonly country:string
+    constructor(n:string,a:number,c:string){
+        this.name=n;
+        this.age=a;
+        this.country=c
+
+    }
+    play(){
+        console.log(`${this.name} is playing for ${this.country}`);
+    }
+}
+const marshafi2 = new Player('Mash',34,'Bangladesh')
+const sakib2 = new Player('Shakib',34,'Bangladesh')
+
+// we access modifier access must be interrupt
+// in public can do anything
+// in private cant modify or show
+// in readonly can just show
+
+const players2:Player[]=[];
+players.push(marshafi2)
+players.push(sakib2)
+console.log(players2);
