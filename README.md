@@ -1,5 +1,16 @@
 # Typescript
 
+Node install
+nvm - node version manager should be downloaded
+in cmd:
+nvm install [node version I want to install]
+nvm list
+nvm use [already install and want to use]
+
+---
+
+tsc --init (for tsconfig.json from where I can customize many things like rootdir, outdir, ES3/5/6/ )
+
 # variable declaration and its behavior
 
 ```javascript

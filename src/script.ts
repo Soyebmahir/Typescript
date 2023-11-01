@@ -145,3 +145,47 @@ const players2:Player[]=[];
 players.push(marshafi2)
 players.push(sakib2)
 console.log(players2);
+
+// interface
+interface RectangularOptions {
+    width:number,
+    length:number
+}
+function drawRectangular(options:RectangularOptions){
+    let width=options.width;
+    let length=options.length
+}
+drawRectangular({width:30,
+length:20})
+
+
+
+interface IsPlayer{
+    name:string;
+    age:number;
+    country:string;
+
+    play():void;
+}
+class Player5 implements IsPlayer {
+    name:string;
+    age:number;
+    country:string
+    constructor(
+        name:string,
+         age:number,
+         country:string
+         )
+         {
+            this.name=name;
+            this.age=age;
+            this.country=country
+         }
+    
+    play(){
+   console.log("object");
+    }
+}
+let Soyeb :IsPlayer;
+Soyeb=new Player5('Soyeb',34,'Bangladesh')
+console.log(Soyeb);
