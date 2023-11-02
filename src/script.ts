@@ -1,4 +1,5 @@
-let studentName ='soyeb';
+{
+    let studentName ='soyeb';
 // studentName=34; //here Im getting error because in Ts when you declare and assign at the same line it will take the assigned data type permanently
 console.log(studentName);
 let number ;
@@ -27,11 +28,37 @@ student.push('Soyeb')
 student.push('26')
 const developer =['soyeb',24,{},true] // now it will take string,number,object, boolean
 
+
+// Tuple
+let ageName = [54,'Abir']
+ageName[0]='Akash' // it will give me access to assign string or Number in any index
+let ageName2 :[number,string] =[54,'Abir']
+// ageName2[0]='abir'  // it wont allow me to change the tuple pattern
+
 // object 
-const employe={
+const employe:{
+    name:string,
+    age:number,
+    retired:boolean,
+}={
     name:'Soyeb',
     age:24,
     retired:false
+}
+let user:{name:string,
+     age?:number, //here age is declared as option by ? mark
+     active:boolean}
+user={
+    name:'soyeb',
+    active:true
+}
+let user2:{name:'Soyeb Mohammad',
+     age?:number, //here age is declared as option by ? mark
+     active:boolean}
+user2={
+    // name:'soyeb', // giving me error cz explicitly declared type as "Soyeb Mohammad", have to assign  Soyeb Mohammad as a value, which is called literal type
+    name:'Soyeb Mohammad',
+    active:true
 }
 // employe.name=24 // will give an error cause name already assigned as a string type variable
 // employe.salary=3000 // also give an error cz there is no variable or property named salary
@@ -69,7 +96,11 @@ myFunc2=(a:number,b:number,c:number=0)=>{
     console.log(a+b);
 }
 myFunc2(10,20)
-
+// arrow funciton 
+const addArrow =(num1:number,num2:number):number =>num1+num2
+// map
+const arr:number[] =[2,3,4]
+const newArr:number[] = arr.map((num:number):number=>num*num)
 // Type Alias
 type stringOrNumber =string|number;
 type userType={name:string,age:number}
@@ -189,3 +220,5 @@ class Player5 implements IsPlayer {
 let Soyeb :IsPlayer;
 Soyeb=new Player5('Soyeb',34,'Bangladesh')
 console.log(Soyeb);
+
+}

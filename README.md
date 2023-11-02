@@ -54,13 +54,36 @@ student.push("26");
 const developer = ["soyeb", 24, {}, true]; // now it will take string,number,object, boolean
 ```
 
+### Tuple
+
+```javascript
+let ageName = [54, "Abir"];
+ageName[0] = "Akash"; // it will give me access to assign string or Number in any index
+let ageName2: [number, string] = [54, "Abir"];
+// ageName2[0]='abir'  // it wont allow me to change the tuple pattern
+```
+
 ### Object
 
 ```javascript
-const employe = {
+const employe: {
+  name: string,
+  age: number,
+  retired: boolean,
+} = {
   name: "Soyeb",
   age: 24,
   retired: false,
+};
+
+let user: {
+  name: string,
+  age?: number, //here age is declared as option by ? mark
+  active: boolean,
+};
+user = {
+  name: "soyeb",
+  active: true,
 };
 // employe.name=24 // will give an error cause name already assigned as a string type variable
 // employe.salary=3000 // also give an error cz there is no variable or property named salary
@@ -100,6 +123,12 @@ myFunc = (a: number, b: number, c?: number) => {
   console.log(a + b);
 };
 myFunc(10, 20);
+
+// arrow funciton
+const addArrow = (num1: number, num2: number): number => num1 + num2;
+// map
+const arr: number[] = [2, 3, 4];
+const newArr: number[] = arr.map((num: number): number => num * num);
 ```
 
 ```javascript
