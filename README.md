@@ -1,15 +1,70 @@
 # Typescript
 
-Node install
-nvm - node version manager should be downloaded
-in cmd:
-nvm install [node version I want to install]
-nvm list
-nvm use [already install and want to use]
+## What It TypeScript:
 
----
+- TypeScript is a language for application-scale JavaScript
+- Typescript is an object oriented Programming Language that build on top of JavaScript with Extra Feature.
+- Typescript is superset of JavaScript developed by microsoft.
+- Typescript is strongly Typed programming Languages.
+- Typescript Designed By Andres Hejlsberg with c# or .net specification .
+- Typescript can be transpiled older versions of javaScript
 
-tsc --init (for tsconfig.json from where I can customize many things like rootdir, outdir, ES3/5/6/ )
+## Whats Wrong with JavaScript ?
+
+- JavaScript is an Dynamically Typed Language.
+- JavaScript is not suitable for Large scale application.
+- Lack of Strong Typing.
+- only errors during runtime.
+- Suffers type correction.
+- Hard to find bugs.
+- Can Browser Recognize TypeScript Code ?
+- No, We need to transpiled typeScript by using complier like babel, swc etc.
+- Typescript convert into javaScript then Browser can read the code.
+
+## Benefits of TypeScript:
+
+- Support all JS Types.
+- String
+- Number
+- Boolean
+- Null
+- Undefined
+- Object
+- Symbol
+
+## Give Some new types :
+
+- Interface
+- void
+- Array
+- Tuple
+- Enum
+- Union
+- InterSection
+
+## Type Safety
+
+- Support Older Browser
+- Less Bugs
+- Increase Developer Productivity
+- Less Bugs && Less Testing.
+- Best Intelligence support.
+- Typescript give us an complier name tsc or typescript complier
+
+## TypeScript Installation :
+
+- npm i -g typescript
+
+## TypeScript Configs or tsconfig.js Command:
+
+- tsc --init
+- TypeScript File Run:
+- tsc filename.ts
+- tsc --w file.ts
+
+## after include configs only use :
+
+tsc - watch;
 
 # variable declaration and its behavior
 
@@ -241,4 +296,88 @@ const players2:Player[]=[];
 players.push(marshafi2)
 players.push(sakib2)
 console.log(players2);
+```
+
+## ? Changed Name With Use Case :
+
+## Ternary Operator : "? "
+
+- Ternary operator is a conditional operator.
+- Ternary Operator get three operands.
+
+# Syntax: condition ? expression : expression
+
+- If the condition is truthy Ternary operator execute the first expression.
+  Otherwise execute the second expression
+
+```javascript
+type TAge = number;
+
+const age: TAge = 20;
+
+const isAdult: boolean = age >= 18 ? "Adult" : "Not Adult";
+console.log(isAdult);
+```
+
+## Nullish Coalescing Operator: (??)
+
+- Nullish Coalescing Operator is a Logical Operator.
+
+- Nullish Coalescing Operator return it's right hand Operand if its left hand side operand is null or undefined
+
+- It's worked based on null or undefined.
+
+# Syntax : operand ?? "default value"
+
+# Example :
+
+```javascript
+type TUserName = string | null | undefined;
+
+const user1 : TUserName = 'Mostafizur Rahaman";
+const user2: TUserName = '';
+const user2: TUserName= null;
+
+const isAvail1 = user1 ?? "User One doesn't Exist";
+const isAvail2 = user2 ?? "User Two doesn't Exist"
+const isAvail3 = user3 ?? "User Three doesn't Exist"
+// output1: isAvail1 =Mostafizur Rahaman
+// output2: isAvail2 = User Two doesn't Exist
+// output3: isAvail3 = User Three doesn't Exist.
+
+const value = null ?? "default value";
+console.log(value);
+// output: value = "default value"
+```
+
+## Optional Chaining : (?.)
+
+Optional chaining is a feature introduced in ES2020 that allows for safe and concise access to nested object properties. It uses the ?. operator to check if a reference to the left is undefined or null, and if so, it short circuits and returns undefined. Otherwise, it continues the chain of access checks.
+
+## Syntax: obj?.propertyName?.properTyeName?.propertyName
+
+Example:
+// Optional Chaining :
+
+```javascript
+type TStudent = {
+  name: string,
+  age: number,
+  address: {
+    permanentAddress?: string,
+    presentAddress: string,
+  },
+  roll: number,
+};
+
+const student: TStudent = {
+  name: "Mostafizur Rahaman",
+  age: 20,
+  address: {
+    presentAddress: "Lakshmipur",
+  },
+  roll: 478889,
+};
+
+console.log(student?.address?.permanentAddress);
 ```
