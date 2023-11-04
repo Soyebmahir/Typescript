@@ -37,6 +37,8 @@ type User2 ={
 }
 const resGenericObjectTuple = createArrayWithGenreicTuple<User,string>({name:'soyeb',age:31},'bangladesh')
 
+// another example
+
 const addCOurseTostudent =<T>(student:T)=>{
     const course="Next Level Web Developer"
 return {

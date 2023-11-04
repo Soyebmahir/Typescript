@@ -317,3 +317,37 @@ type StudentUser = {
 };
 const result2 = addCOurseTostudent<StudentUser>({ name: "Abir", age: 20 });
 ```
+
+## constraints
+
+- If we require more control over our generic types, we use TypeScript Generic Constraints. We use Generic type constraints to specify limits on the types for generic type parameters. This helps us to determine that generic types extend or implement a specific type or contain specific properties
+
+```typescript
+// constraint
+
+const addCOurseTostudent = <T extends { name: string; id: number }>(
+  student: T
+) => {
+  const course = "Next Level Web Developer";
+  return {
+    ...student,
+    course,
+  };
+};
+type StudentUser = {
+  name: string;
+  age: number;
+  id: number;
+};
+const student1 = addCOurseTostudent<StudentUser>({
+  name: "Abir",
+  id: 1,
+  age: 20,
+});
+const student2 = addCOurseTostudent<StudentUser>({
+  name: "Abir",
+  age: 20,
+  id: 2,
+});
+// const student3 =addCOurseTostudent({name:'Abir',age:20})  // will give a error: Object literal may only specify known properties, and 'age' does not exist in type '{ name: string; id: number; }
+```
