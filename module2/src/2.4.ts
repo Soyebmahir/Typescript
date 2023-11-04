@@ -103,7 +103,7 @@ type Bike={
   name:string,
   model:string
 }
-const richDeveloper:developer<richWatch,Bike>={
+const richDeveloper2:developer<richWatch,Bike>={
     name:'sohag',
     computer:{
         brand:'Apple',

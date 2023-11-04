@@ -17,4 +17,5 @@
     };
     const result1 = kgToGm(1000);
     const result2 = kgToGm('1000');
+    // now I know what will return
 }
