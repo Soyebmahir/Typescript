@@ -58,7 +58,9 @@
 ## TypeScript Configs or tsconfig.js Command:
 
 - tsc --init
-- TypeScript File Run:
+
+## TypeScript File Run:
+
 - tsc filename.ts
 - tsc --w file.ts
 
