@@ -33,5 +33,15 @@ const userWithID:genericTuple<number,{name:string,age:number}>=[123,{
     name:'soyeb',
     age:29
 }]
+
+// type User={
+// name:string, we can easily typed the object and pass it to generic
+// age:number
+// }
+interface User{
+    name:string, //also with interface
+age:number
+}
+const userWithID2:genericTuple<number,User>=[123,{name:'Tuir',age:23}]
 }
 
