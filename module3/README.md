@@ -74,3 +74,60 @@
   //
 }
 ```
+
+# typeof type guards
+
+## As we’ve seen, JavaScript supports a typeof operator which can give very basic information about the type of values we have at runtime. TypeScript expects this to return a certain set of strings:
+
+- "string"
+- "number"
+- "bigint"
+- "boolean"
+- "symbol"
+- "undefined"
+- "object"
+- "function"
+
+### In TypeScript, checking against the value returned by typeof is a type guard.
+
+```typescript
+// type guard
+// typeof as type guard
+
+type unionType = string | number;
+const add = (param1: unionType, param2: unionType): unionType => {
+  if (typeof param1 === "number" && typeof param2 === "number") {
+    return param1 + param2;
+  } else {
+    return param1.toString() + param2.toString();
+  }
+};
+console.log(add("3", 3));
+
+// in as type guard
+type NormalUser = {
+  name: string;
+};
+type AdminUser = {
+  name: string;
+  role: "admin";
+};
+type userType = AdminUser | NormalUser;
+const getUser = (user: userType) => {
+  if ("role" in user) {
+    console.log(`my name is ${user.name} and Im an ${user.role}`);
+  } else {
+    console.log(`my name is ${user.name}`);
+  }
+};
+
+const normalUser: NormalUser = {
+  name: "soyeb",
+};
+const adminUser: AdminUser = {
+  name: "Sohag",
+  role: "admin",
+};
+console.log(getUser(normalUser)); //output :my name is soyeb
+console.log(getUser(adminUser)); //output : my name is Sohag and Im an admin
+```
