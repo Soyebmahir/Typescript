@@ -569,6 +569,7 @@ const areaString: convertArea<{
 
 ```typescript
 // Some utilities we should know about
+// Some utilities we should know about
 type Person = {
   name: string;
   age: number;
