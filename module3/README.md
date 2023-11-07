@@ -1,0 +1,133 @@
+# Class with typescript
+
+## clean class with parameter properties
+
+```typescript
+{
+  // class
+  class Animal {
+    // name: string;
+    // species: string;
+    // sound: string;
+
+    //by using parameter properties we dont need to declare properties and assigning value in properties with this key word
+    constructor(
+      public name: string,
+      public species: string,
+      public sound: string
+    ) {
+      // this.name = name;
+      // this.species = species;
+      // this.sound = sound;
+    }
+    makeSound() {
+      console.log(`The name is ${this.name} and sound ${this.sound}`);
+    }
+  }
+  const dog = new Animal("Tomy", "dog", "gew");
+  dog.makeSound();
+  console.log(dog);
+
+  //
+}
+```
+
+# Inheritance
+
+### Inherit from parent class
+
+```typescript
+{
+  //inheritance
+  class Person {
+    name: string;
+    age: number;
+    city: string;
+    constructor(name: string, age: number, city: string) {
+      this.name = name;
+      this.age = age;
+      this.city = city;
+    }
+    getSleep() {
+      console.log(`have to sleep at least 6 hour`);
+    }
+  }
+  class student extends Person {
+    constructor(name: string, age: number, city: string) {
+      super(name, age, city);
+    }
+  }
+
+  const student1 = new student("abir", 34, "bd");
+  console.log(student1);
+
+  class Teacher extends Person {
+    designation: string;
+    constructor(name: string, age: number, city: string, designation: string) {
+      super(name, age, city); //super is used to pass those arguments which are belongs to Parent class
+      this.designation = designation;
+    }
+  }
+  const teacher1 = new Teacher("Soyeb", 23, "bd", "Developer");
+  console.log(teacher1);
+
+  //
+}
+```
+
+# typeof type guards
+
+## As we’ve seen, JavaScript supports a typeof operator which can give very basic information about the type of values we have at runtime. TypeScript expects this to return a certain set of strings:
+
+- "string"
+- "number"
+- "bigint"
+- "boolean"
+- "symbol"
+- "undefined"
+- "object"
+- "function"
+
+### In TypeScript, checking against the value returned by typeof is a type guard.
+
+```typescript
+// type guard
+// typeof as type guard
+
+type unionType = string | number;
+const add = (param1: unionType, param2: unionType): unionType => {
+  if (typeof param1 === "number" && typeof param2 === "number") {
+    return param1 + param2;
+  } else {
+    return param1.toString() + param2.toString();
+  }
+};
+console.log(add("3", 3));
+
+// in as type guard
+type NormalUser = {
+  name: string;
+};
+type AdminUser = {
+  name: string;
+  role: "admin";
+};
+type userType = AdminUser | NormalUser;
+const getUser = (user: userType) => {
+  if ("role" in user) {
+    console.log(`my name is ${user.name} and Im an ${user.role}`);
+  } else {
+    console.log(`my name is ${user.name}`);
+  }
+};
+
+const normalUser: NormalUser = {
+  name: "soyeb",
+};
+const adminUser: AdminUser = {
+  name: "Sohag",
+  role: "admin",
+};
+console.log(getUser(normalUser)); //output :my name is soyeb
+console.log(getUser(adminUser)); //output : my name is Sohag and Im an admin
+```
