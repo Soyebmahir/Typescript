@@ -336,14 +336,14 @@ console.log(isAdult);
 ```javascript
 type TUserName = string | null | undefined;
 
-const user1 : TUserName = 'Mostafizur Rahaman";
+const user1 : TUserName = 'mahir";
 const user2: TUserName = '';
 const user2: TUserName= null;
 
 const isAvail1 = user1 ?? "User One doesn't Exist";
 const isAvail2 = user2 ?? "User Two doesn't Exist"
 const isAvail3 = user3 ?? "User Three doesn't Exist"
-// output1: isAvail1 =Mostafizur Rahaman
+// output1: isAvail1 =mahir
 // output2: isAvail2 = User Two doesn't Exist
 // output3: isAvail3 = User Three doesn't Exist.
 
