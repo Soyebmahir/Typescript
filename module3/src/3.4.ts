@@ -1,5 +1,5 @@
 {
-    //
+    // type guard with instance
     class Person {
         name: string;
         age: number;
