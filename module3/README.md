@@ -131,3 +131,331 @@ const adminUser: AdminUser = {
 console.log(getUser(normalUser)); //output :my name is soyeb
 console.log(getUser(adminUser)); //output : my name is Sohag and Im an admin
 ```
+
+# type guard with instance
+
+```typescript
+{
+  // type guard with instance
+  class Person {
+    name: string;
+    age: number;
+    city: string;
+    constructor(name: string, age: number, city: string) {
+      this.name = name;
+      this.age = age;
+      this.city = city;
+    }
+    getSleep() {
+      console.log(`have to sleep at least 6 hour`);
+    }
+  }
+  class student extends Person {
+    constructor(name: string, age: number, city: string) {
+      super(name, age, city);
+    }
+    giveExam() {
+      console.log("Giving Exam");
+    }
+  }
+
+  class Teacher extends Person {
+    designation: string;
+    constructor(name: string, age: number, city: string, designation: string) {
+      super(name, age, city);
+      this.designation = designation;
+    }
+    takeExam() {
+      console.log(`Taking exam`);
+    }
+  }
+  //common way
+  /**
+      const getPerson = (person: Person) => {
+         if (person instanceof Teacher) {
+             person.takeExam()
+         } else if (person instanceof student) {
+             person.giveExam()
+         } else {
+             person.getSleep()
+         }
+ 
+     }
+     */
+
+  //  Smart way
+  const isStudent = (person: Person): person is student => {
+    //cant use return type as boolean cz when I use this function in getPerson function's condition it will just help the condition but inside the if/else condition function wont undestand the meaning of person. so we will use 'person is student'
+    return person instanceof student;
+  };
+  const isTeacher = (person: Person): person is Teacher => {
+    return person instanceof Teacher;
+  };
+
+  const getPerson = (person: Person) => {
+    if (isTeacher(person)) {
+      person.takeExam();
+    } else if (isStudent(person)) {
+      person.giveExam();
+    } else {
+      person.getSleep();
+    }
+  };
+  const teacher1 = new Teacher("Soyeb", 23, "bd", "Developer");
+
+  const student1 = new student("abir", 34, "bd");
+  getPerson(teacher1);
+  getPerson(student1);
+
+  //
+}
+```
+
+```typescript
+{
+  // access modifiers
+  class BankAccount {
+    public readonly id: number;
+    public name: string;
+    // private _balance: number; //if we use private we cant access this property except inside of his own class. even If i extends this class we wont get the private properties thats why we will use protected.
+    protected _balance: number; // protected wont allow us to access from outside class but can be used by extends
+
+    constructor(id: number, name: string, balance: number) {
+      this.id = id;
+      this.name = name;
+      this._balance = balance;
+    }
+
+    public addDeposit(amount: number) {
+      this._balance = this._balance + amount;
+    }
+
+    public getBalance() {
+      return this._balance;
+    }
+  }
+
+  class StudentAccount extends BankAccount {
+    test() {
+      // writing this. you will see the result
+    }
+  }
+
+  const goribManusherAccount = new BankAccount(111, "Mr. gorib", 20);
+  // goribManusherAccount.balance = 0;
+  goribManusherAccount.addDeposit(20);
+  const myBalance = goribManusherAccount.getBalance();
+  console.log(myBalance);
+
+  //
+}
+```
+
+```typescript
+// getter and setter
+class BankAccount {
+  public readonly id: number;
+  public name: string;
+  protected _balance: number;
+
+  constructor(id: number, name: string, balance: number) {
+    this.id = id;
+    this.name = name;
+    this._balance = balance;
+  }
+
+  set deposit(amount: number) {
+    this._balance = this.balance + amount;
+  }
+  // public addDeposit(amount: number) {
+  //   this._balance = this._balance + amount;
+  // }
+
+  //getter
+  get balance() {
+    return this._balance;
+  }
+  // public getBalance() {
+  //   return this._balance;
+  // }
+}
+
+const goribManusherAccount = new BankAccount(111, "Mr. gorib", 50);
+
+// goribManusherAccount.deposit = 0;
+// goribManusherAccount.addDeposit(20); // function call korte hsse
+goribManusherAccount.deposit = 50;
+// const myBalance = goribManusherAccount.getBalance(); // function call korte hsse
+
+const myBalance = goribManusherAccount.balance; // property er mto kore
+console.log(myBalance);
+
+//
+```
+
+```typescript
+// static
+class Counter {
+  static count: number = 0;
+
+  static increment() {
+    return (Counter.count = Counter.count + 1);
+  }
+
+  static decrement() {
+    return (Counter.count = Counter.count - 1);
+  }
+}
+
+// const instance1 = new Counter();
+console.log(Counter.increment()); // 1 -> different memory
+// 1 -> different memory
+
+// const instance2 = new Counter();
+console.log(Counter.increment()); // 1  --> different memory
+// 1  --> different memory
+
+// const instance3 = new Counter();
+console.log(Counter.increment());
+//
+```
+
+```typescript
+// polymorphisom
+
+class Person {
+  getSleep() {
+    console.log(`I am sleeping for 8 hours per day`);
+  }
+}
+
+class Student extends Person {
+  getSleep() {
+    console.log(`I am sleeping for 7 hours per day`);
+  }
+}
+
+class Developer extends Person {
+  getSleep() {
+    console.log(`I am sleeping for 6 hours per day`);
+  }
+}
+
+const getSleepingHours = (param: Person) => {
+  param.getSleep();
+};
+
+const person1 = new Person();
+const person2 = new Student();
+const person3 = new Developer();
+
+getSleepingHours(person1);
+getSleepingHours(person2);
+getSleepingHours(person3);
+
+class Shape {
+  getArea(): number {
+    return 0;
+  }
+}
+
+// pi* r* r
+class Circle extends Shape {
+  radius: number;
+  constructor(radius: number) {
+    super();
+    this.radius = radius;
+  }
+
+  getArea(): number {
+    return Math.PI * this.radius * this.radius;
+  }
+}
+
+// height * width
+class Reactangle extends Shape {
+  height: number;
+  width: number;
+
+  constructor(height: number, width: number) {
+    super();
+    this.height = height;
+    this.width = width;
+  }
+
+  getArea(): number {
+    return this.height * this.width;
+  }
+}
+
+const getShapeArea = (param: Shape) => {
+  console.log(param.getArea());
+};
+
+const shape1 = new Shape();
+const shape2 = new Circle(10);
+const shape3 = new Reactangle(10, 20);
+
+getShapeArea(shape3);
+
+//
+```
+
+```typescript
+// abstraction  : 1. interface 2. abstract
+
+// idea
+interface Vehicle1 {
+  startEngine(): void;
+  stopEngine(): void;
+  move(): void;
+}
+
+// real implementation
+class Car1 implements Vehicle1 {
+  startEngine(): void {
+    console.log(`I am starting the car engine`);
+  }
+  stopEngine(): void {
+    console.log("I am stopping the car engine");
+  }
+  move(): void {
+    console.log(`I am moving the car`);
+  }
+  test() {
+    console.log(`I am just testing`);
+  }
+}
+
+const toyotaCar = new Car1();
+toyotaCar.startEngine();
+
+// abstract class
+
+// idea
+abstract class Car2 {
+  abstract startEngine(): void;
+  abstract stopEngine(): void;
+  abstract move(): void;
+  test() {
+    console.log(`I am just testing`);
+  }
+}
+
+class ToyotaCar extends Car2 {
+  startEngine(): void {
+    console.log("I am starting the car  engine");
+  }
+  stopEngine(): void {
+    console.log("I am stopping the car engine");
+  }
+  move(): void {
+    console.log("I am moving  the car");
+  }
+}
+
+// const hondaCar = new Car2();
+// hondaCar.startEngine();
+
+//
+```
